@@ -1,0 +1,113 @@
+    addi        x0, x0, 2047        
+    addi        x1, x0, 2047        
+    xori        x2, x1, 1024        
+    ori         x4, x2, 1563        
+    andi        x5, x4, 1333        
+    slli        x6, x5, 11          
+    addi        x7, x0, -78         
+    srai        x7, x7, 4           
+    srli        x7, x7, 1           
+    beq         x4, x1, 36     
+    sub         x12, x11, x4        
+    xor         x13, x12, x4        
+    or          x14, x6, x2         
+    and         x15, x6, x2         
+    bge         x4, x7, 76     
+    addi        x9, x0, 1           
+    sll         x16, x4, x9         
+    blt         x4, x7, 24     
+    add         x8, x4, x4          
+    addi        x9, x0, 2           
+    mul         x10, x4, x9         
+    sll         x11, x4, x9         
+    bge         x8, x10, -48    
+    sb          x12, 8(x1)          
+    sb          x12, 16(x2)         
+    sll         x7, x7, x9          
+    sra         x18, x7, x9         
+    srl         x19, x7, x9         
+    sub         x14, x14, x6        
+    addi        x14, x14, -899      
+    sh          x19, 8(x14)         
+    sw          x11, 16(x14)        
+    jal         x20, 76        
+    lbu         x21, 16(x14)        
+    lbu         x22, 17(x14)        
+    slli        x22, x22, 8         
+    lbu         x23, 18(x14)        
+    slli        x23, x23, 16        
+    lbu         x24, 19(x14)        
+    slli        x24, x24, 24        
+    add         x25, x21, x22       
+    add         x25, x25, x23       
+    add         x25, x25, x24       
+    bne         x25, x19, 32   
+    bltu        x7, x25, -136    
+    bgeu        x7, x25, 56    
+    rem         x25, x25, x23       
+    remu        x25, x18, x25       
+    mulhu       x9, x25, x18        
+    mulhsu      x2, x18, x7         
+    jal         x0, 108         
+    lb          x21, 16(x14)        
+    lb          x22, 17(x14)        
+    lb          x23, 18(x14)        
+    lb          x24, 19(x14)        
+    add         x26, x21, x22       
+    add         x26, x26, x23       
+    add         x26, x26, x24       
+    jalr        x20, 0(x20)         
+    lui         x30, 500            
+    auipc       x31, 500            
+    slt         x27, x12, x22       
+    slti        x28, x12, 100       
+    add         x27, x27, x28       
+    sltiu       x28, x12, -10       
+    add         x27, x27, x28       
+    sltu        x28, x18, x7        
+    add         x27, x27, x28       
+    lw          x28, 16(x14)        
+    add         x28, x28, x27       
+    lh          x27, 16(x14)        
+    lhu         x29, 16(x14)        
+    divu        x27, x27, x29       
+    mulh        x1, x23, x27        
+    mul         x23, x23, x27       
+    div         x23, x23, x27       
+    jal         x20, -120        
+    flw         f0, 16(x14)         
+    fmv.w.x    f12, x1            
+    fadd.s      f2, f0, f1          
+    fdiv.s      f3, f2, f0          
+    fsw         f3, 32(x14)         
+    flw         f4, 32(x14)         
+    fsgnjn.s    f4, f4, f0          
+    remu        x25, x25, x0        
+    fmul.s      f6, f3, f2          
+    fsgnjn.s    f7, f0, f0          
+    fsub.s      f8, f6, f7          
+    fmadd.s     f5, f3, f2, f0      
+    fsqrt.s     f9, f7              
+    fsgnj.s     f10, f7, f4         
+    fsgnjx.s    f11, f7, f4         
+    fmsub.s     f12, f4, f3, f10    
+    fmin.s      f13, f11, f12       
+    fmax.s      f14, f11, f12       
+    fnmadd.s    f15, f13, f4, f4    
+    fnmsub.s    f16, f13, f4, f5    
+    fmv.x.w     x1, f7              
+    feq.s       x23, f0, f14        
+    flt.s       x24, f0, f14        
+    add         x23, x23, x24       
+    fle.s       x24, f11, f14       
+    add         x23, x23, x24       
+    add         x1, x23, x1         
+    fcvt.wu.s   x23, f3             
+    fsgnjn.s    f3, f3, f3          
+    fcvt.w.s    x24, f3             
+    add         x23, x24, x23       
+    fcvt.s.w    f17, x7             
+    fclass.s    x24, f8             
+    fcvt.s.wu   f18, x7             
+    addi        x17, x0, 10         
+    ecall                           
