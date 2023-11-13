@@ -1,0 +1,17 @@
+#Para probar los 2 errores de SC.W, se debe usar el código como está, o descomentar las lineas sw a2, 0(a2) y 
+#sc.w a0, a2, a3. Y comentar la linea sc.w a0, a3, a2
+
+addi    a1, x0, 1	# a1=1
+addi    a2, x0, 4	# a2=4
+addi	a3, x0, 5	# a3=5
+sw 	a1, 0(a2)	# se guarda en el espacio de memoria 4 el valor 1 (M[a2]=a1)
+
+lr.w	a0, a2		#se carga el valor del espacio de memoria 4 en a0, también se reserva ese espacio
+
+#sw 	a2, 0(a2)	# se guarda en el espacio de memoria 4 el valor 4 (M[a2]=a2)
+#sc.w	a0, a2, a3	#sc erroneo por modificación de memoria
+
+sc.w	a0, a3, a2	#sc erroneo modificación de dirección
+
+addi x17, zero, 10	# terminar programa
+ecall
